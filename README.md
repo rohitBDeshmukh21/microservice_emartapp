@@ -5,7 +5,7 @@ Use Vagrant for Running a Vagrant VM
 Install docker on the vm
 
 # Bring up  containers from docker-compose file
-vim docker-compose.yaml
+vim docker-compose.yaml  
 docker compose up -d
 docker compose ps
 docker ps -a
