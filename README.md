@@ -23,9 +23,7 @@ docker compose down
 
 docker system prune -a
 
-exit
-
-exit
+exit (logout out of the Vagrant VM)
 
 vagrant halt
 
