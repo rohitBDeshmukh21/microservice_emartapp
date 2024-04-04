@@ -1,29 +1,76 @@
 # emart-app
 
-# Step by Step Approach 
-Use Vagrant for Running a Vagrant VM
+This repository contains the necessary setup to run the `emart-app` using Vagrant for managing the virtual machine and Docker for containerization.
 
-Install docker on the vm
+## Step-by-Step Approach
 
-# Bring up  containers from docker-compose file
-vim docker-compose.yaml  
+### 1. Use Vagrant for Running a Virtual Machine
 
-docker compose up -d
+Ensure Vagrant is installed on your system. If not, follow the official installation guide for your operating system: [Vagrant Installation Guide](https://www.vagrantup.com/docs/installation)
 
-docker compose ps
+```bash
+# Navigate to the project directory
+cd emart-app
 
-docker ps -a
+# Initialize the Vagrant environment
+vagrant up
+```
 
-ip addr show
+### 2. Install Docker on the VM
 
-# Go to browser enter http://VMIp:80
+SSH into the Vagrant VM and install Docker.
 
-# Clean up
-docker compose down
+```bash
+# SSH into the Vagrant VM
+vagrant ssh
 
-docker system prune -a
+# Install Docker (assuming a Debian-based distribution)
+sudo apt-get update
+sudo apt-get install docker.io
+```
 
-exit (logout out of the Vagrant VM)
+### 3. Bring up Containers from Docker Compose File
 
+Edit the `docker-compose.yaml` file if necessary.
+
+```bash
+# Navigate to the project directory
+cd /vagrant
+
+# Bring up containers using Docker Compose
+sudo docker-compose up -d
+```
+
+### 4. Verify Container Status
+
+```bash
+# Check the status of containers
+sudo docker-compose ps
+
+# Or check all containers (including stopped ones)
+sudo docker ps -a
+```
+
+### 5. Access Application
+
+Open a web browser and enter `http://VMIp:80` where `VMIp` is the IP address of your Vagrant VM.
+
+### 6. Clean Up
+
+```bash
+# Stop and remove containers
+sudo docker-compose down
+
+# Prune unused Docker resources
+sudo docker system prune -a
+
+# Exit from the Vagrant VM
+exit
+```
+
+### 7. Shutdown Vagrant VM
+
+```bash
+# Halt the Vagrant VM
 vagrant halt
-
+```
